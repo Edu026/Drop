@@ -128,7 +128,7 @@ public class GameScreen implements Screen {
                 raindrop.y -= 200 * Gdx.graphics.getDeltaTime();
                 if (raindrop.y + 64 < 0) {
                     iter.remove();
-                    game.dispose();
+                    game.dispose();//
                 }
 
                 if (raindrop.overlaps(bucket)) {

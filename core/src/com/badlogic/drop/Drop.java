@@ -45,9 +45,9 @@ public class Drop extends Game {
 		game_over = false;
 	}
 	public void dispose() {
+		this.setScreen(new EndMenuScreen(this));
 		batch.dispose();
 		font.dispose();
-		this.setScreen(new EndMenuScreen(this));
 	}
 
 }
