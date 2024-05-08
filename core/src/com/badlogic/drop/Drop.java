@@ -13,6 +13,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.TimeUtils;
@@ -27,11 +28,15 @@ public class Drop extends Game {
 	public BitmapFont font;
 
 	public boolean game_over = false;
+	Skin skin;
+
+
 
 	public void create() {
 		batch = new SpriteBatch();
 		font = new BitmapFont(); // use libGDX's default Arial font
 		this.setScreen(new MainMenuScreen(this));
+		skin = new Skin(Gdx.files.internal("uiskin.json"));
 	}
 
 	public void render() {
