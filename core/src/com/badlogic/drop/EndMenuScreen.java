@@ -2,6 +2,7 @@ package com.badlogic.drop;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.ScreenUtils;
 
@@ -9,11 +10,11 @@ import com.badlogic.gdx.utils.ScreenUtils;
 public class EndMenuScreen implements Screen{
 
     final Drop game;
-
     OrthographicCamera camera;
 
     public EndMenuScreen(final Drop game) {
         this.game = game;
+
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 800, 480);
@@ -32,6 +33,7 @@ public class EndMenuScreen implements Screen{
         game.batch.setProjectionMatrix(camera.combined);
 
         game.batch.begin();
+
         game.font.draw(game.batch, "You have lost!", 250, 250);
         game.font.draw(game.batch, "Tap anywhere to play again!", 250, 200);
         game.batch.end();
@@ -64,7 +66,6 @@ public class EndMenuScreen implements Screen{
 
     @Override
     public void dispose() {
-
     }
 
 

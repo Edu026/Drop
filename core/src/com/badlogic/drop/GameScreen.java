@@ -22,7 +22,7 @@ public class GameScreen implements Screen {
     Texture dropImage;
     Texture bucketImage;
     Texture background;
-    Sound dropSound;
+    Sound dropSound, endGameSound;
     Music rainMusic;
     OrthographicCamera camera;
     Rectangle bucket;
@@ -41,6 +41,7 @@ public class GameScreen implements Screen {
         // load the drop sound effect and the rain background "music"
         dropSound = Gdx.audio.newSound(Gdx.files.internal("drop.wav"));
         rainMusic = Gdx.audio.newMusic(Gdx.files.internal("rain.mp3"));
+        endGameSound = Gdx.audio.newSound(Gdx.files.internal("endGameSound.wav"));
         rainMusic.setLooping(true);
 
         // create the camera and the SpriteBatch
@@ -127,8 +128,10 @@ public class GameScreen implements Screen {
                 Rectangle raindrop = iter.next();
                 raindrop.y -= 200 * Gdx.graphics.getDeltaTime();
                 if (raindrop.y + 64 < 0) {
+                    endGameSound.play();
                     iter.remove();
-                    game.dispose();//
+                    game.setScreen(new EndMenuScreen(game));
+                    dispose();
                 }
 
                 if (raindrop.overlaps(bucket)) {
